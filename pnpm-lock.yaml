@@ -473,6 +473,9 @@ importers:
       webpack-dev-server:
         specifier: ^5.2.2
         version: 5.2.2(webpack@5.104.1(@swc/core@1.13.4)(esbuild@0.25.10))
+      webpack-license-plugin:
+        specifier: ^4.5.1
+        version: 4.5.1(webpack@5.104.1(@swc/core@1.13.4)(esbuild@0.25.10))
       webpack-shebang-plugin:
         specifier: ^1.1.8
         version: 1.1.8
@@ -6015,6 +6018,11 @@ packages:
   natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
 
+  needle@3.3.1:
+    resolution: {integrity: sha512-6k0YULvhpw+RoLNiQCRKOl09Rv1dPLr8hHnVjHqdolKwDrdNyk+Hmrthi4lIGPPz3r39dLx0hsF5s40sZ3Us4Q==}
+    engines: {node: '>= 4.4.x'}
+    hasBin: true
+
   negotiator@0.6.3:
     resolution: {integrity: sha512-+EUsqGPLsM+j/zdChZjsnX51g4XrHFOIXwfnCVPGlQk/k5giakcKsuxCObBRu6DSm9opw/O6slWbJdghQM4bBg==}
     engines: {node: '>= 0.6'}
@@ -7320,6 +7328,18 @@ packages:
   spawnd@5.0.0:
     resolution: {integrity: sha512-28+AJr82moMVWolQvlAIv3JcYDkjkFTEmfDc503wxrF5l2rQ3dFz6DpbXp3kD4zmgGGldfM4xM4v1sFj/ZaIOA==}
 
+  spdx-exceptions@2.5.0:
+    resolution: {integrity: sha512-PiU42r+xO4UbUS1buo3LPJkjlO7430Xn5SVAhdpzzsPHsjbYVflnnFdATgabnLude+Cqu25p6N+g2lw/PFsa4w==}
+
+  spdx-expression-parse@3.0.1:
+    resolution: {integrity: sha512-cbqHunsQWnJNE6KhVSMsMeH5H/L9EpymbzqTQ3uLwNCLZ1Q481oWaofqH7nO6V07xlXwY6PhQdQ2IedWx/ZK4Q==}
+
+  spdx-expression-validate@2.0.0:
+    resolution: {integrity: sha512-b3wydZLM+Tc6CFvaRDBOF9d76oGIHNCLYFeHbftFXUWjnfZWganmDmvtM5sm1cRwJc/VDBMLyGGrsLFd1vOxbg==}
+
+  spdx-license-ids@3.0.23:
+    resolution: {integrity: sha512-CWLcCCH7VLu13TgOH+r8p1O/Znwhqv/dbb6lqWy67G+pT1kHmeD/+V36AVb/vq8QMIQwVShJ6Ssl5FPh0fuSdw==}
+
   spdy-transport@3.0.0:
     resolution: {integrity: sha512-hsLVFE5SjA6TCisWeJXFKniGGOpBgMLmerfO2aCyCU5s7nJ/rpAepqmFifv/GCbSbueEeAJJnmSQ2rKC/g8Fcw==}
 
@@ -8083,6 +8103,12 @@ packages:
 
   webpack-hot-middleware@2.26.1:
     resolution: {integrity: sha512-khZGfAeJx6I8K9zKohEWWYN6KDlVw2DHownoe+6Vtwj1LP9WFgegXnVMSkZ/dBEBtXFwrkkydsaPFlB7f8wU2A==}
+
+  webpack-license-plugin@4.5.1:
+    resolution: {integrity: sha512-WbjMSMPHzFePCSQJqP0qFskGPSwdf3JxIoXa1SK3d1hCXQee7KUrIb+riyXUId71kcHOSyE12pTyrhMl1ozszA==}
+    engines: {node: '>=16.0.0'}
+    peerDependencies:
+      webpack: '>=4.0.0 < 6.0.0'
 
   webpack-shebang-plugin@1.1.8:
     resolution: {integrity: sha512-8iHYp37XjytLuTkw8GCb4wm0s/0IWcv03YsfaDbOeRJfzSuBYVOadvc/QXQvr2b55pOEX1ANAEbz1fFSydJWVA==}
@@ -14924,6 +14950,11 @@ snapshots:
 
   natural-compare@1.4.0: {}
 
+  needle@3.3.1:
+    dependencies:
+      iconv-lite: 0.6.3
+      sax: 1.4.1
+
   negotiator@0.6.3: {}
 
   negotiator@0.6.4: {}
@@ -16373,6 +16404,19 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  spdx-exceptions@2.5.0: {}
+
+  spdx-expression-parse@3.0.1:
+    dependencies:
+      spdx-exceptions: 2.5.0
+      spdx-license-ids: 3.0.23
+
+  spdx-expression-validate@2.0.0:
+    dependencies:
+      spdx-expression-parse: 3.0.1
+
+  spdx-license-ids@3.0.23: {}
+
   spdy-transport@3.0.0:
     dependencies:
       debug: 4.4.3
@@ -17251,6 +17295,15 @@ snapshots:
       ansi-html-community: 0.0.8
       html-entities: 2.6.0
       strip-ansi: 6.0.1
+
+  webpack-license-plugin@4.5.1(webpack@5.104.1(@swc/core@1.13.4)(esbuild@0.25.10)):
+    dependencies:
+      chalk: 5.6.0
+      lodash: 4.17.23
+      needle: 3.3.1
+      spdx-expression-validate: 2.0.0
+      webpack: 5.104.1(@swc/core@1.13.4)(esbuild@0.25.10)
+      webpack-sources: 3.3.3
 
   webpack-shebang-plugin@1.1.8: {}
 

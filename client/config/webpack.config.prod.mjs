@@ -6,6 +6,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
 import webpack from 'webpack';
 import WebpackBar from 'webpackbar';
+import LicensePlugin from 'webpack-license-plugin';
 
 import {buildPaths} from '../../shared/config/buildPaths.mjs';
 
@@ -111,6 +112,15 @@ export default {
     devtoolModuleFilenameTemplate: (info) => path.relative(paths.appSrc, info.absoluteResourcePath).replace(/\\/g, '/'),
   },
   plugins: [
+    new LicensePlugin({
+      outputFilename: 'bundled-licenses.txt',
+      additionalFiles: {
+        [`bundled-licenses.txt`]: (packages) => {
+          const licenses = new Set(packages.map((pkg) => pkg.license));
+          return [...licenses].map((v) => `"${v}"`).join('\n');
+        },
+      },
+    }),
     new HtmlWebpackPlugin({
       inject: true,
       template: paths.appHtml,
