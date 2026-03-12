@@ -119,7 +119,7 @@ export default {
           const licenses = new Set(packages.filter((v) => v.name !== 'flood').map((pkg) => pkg.license));
           return [...licenses].map((v) => `"${v}"`).join('\n');
         },
-        ['bundled-provides.txt']: (packages) => {
+        ['bundled-provides.inc']: (packages) => {
           return packages
             .filter((v) => v.name !== 'flood')
             .map((v) => `Provides: bundled(npm(${v.name})) = ${v.version}`)
