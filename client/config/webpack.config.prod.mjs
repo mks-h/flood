@@ -116,11 +116,14 @@ export default {
       outputFilename: 'bundled-licenses.txt',
       additionalFiles: {
         [`bundled-licenses.txt`]: (packages) => {
-          const licenses = new Set(packages.map((pkg) => pkg.license));
+          const licenses = new Set(packages.filter((v) => v.name !== 'flood').map((pkg) => pkg.license));
           return [...licenses].map((v) => `"${v}"`).join('\n');
         },
         ['bundled-provides.txt']: (packages) => {
-          return packages.map((v) => `Provides: bundled(npm(${v.name})) = ${v.version}`).join('\n');
+          return packages
+            .filter((v) => v.name !== 'flood')
+            .map((v) => `Provides: bundled(npm(${v.name})) = ${v.version}`)
+            .join('\n');
         },
       },
     }),
