@@ -119,6 +119,9 @@ export default {
           const licenses = new Set(packages.map((pkg) => pkg.license));
           return [...licenses].map((v) => `"${v}"`).join('\n');
         },
+        ['bundled-provides.txt']: (packages) => {
+          return packages.map((v) => `Provides: bundled(npm(${v.name})) = ${v.version}`).join('\n');
+        },
       },
     }),
     new HtmlWebpackPlugin({
