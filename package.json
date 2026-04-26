@@ -45,7 +45,7 @@
   "scripts": {
     "build": "panda codegen && node scripts/build.mjs",
     "build-pkg": "rm -rf dist && npm run build && npm run pkg",
-    "pkg": "pkg . --out-path dist-pkg --no-bytecode --public --options=enable-source-maps",
+    "pkg": "pkg . --out-path dist-pkg --no-bytecode --public --options=enable-source-maps --targets node18",
     "format-source": "prettier -w .",
     "check-source-formatting": "prettier -c .",
     "check-types": "tsc",
